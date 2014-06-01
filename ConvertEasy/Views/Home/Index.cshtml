@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>Convert Easy</h1>
+    <p class="lead">Convert Files to word, pdf, excel and rich text format to each other</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Pdf To Word</h2>
+        @using (Html.BeginForm("PdfToDoc", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="alert alert-danger">@Html.ValidationSummary(true)</div>
+                    </div>
+                </div>
+            }
+            <div class="form-group">
+                <input type="file" name="pdfFile" id="pdfFile" />
+                <button type="submit" class="btn btn-primary btn-default" style="margin-top: 15px">PdfToWord</button>
+            </div>
+        }
+
+    </div>
+    <div class="col-md-4">
+        <h2>Word To Pdf</h2>
+        @using (Html.BeginForm("DocToPdf", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="alert alert-danger">@Html.ValidationSummary(true)</div>
+                    </div>
+                </div>
+            }
+            <div class="form-group">
+                <input type="file" name="docFile" id="docFile" />
+                <button type="submit" class="btn btn-primary btn-default" style="margin-top: 15px">WordToPdf</button>
+            </div>
+        }
+    </div>
+
+</div>
